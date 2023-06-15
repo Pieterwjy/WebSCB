@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,4 +31,35 @@ Route::get('/live', function () {
 });
 Route::get('/login', function () {
     return view('login');
+});
+
+
+
+
+//buat GET,POST,UPDATE,DELETE
+Route::get('/home', [LoginController::class,'doLogin'])->name('login');
+
+
+
+
+
+//buat authentication
+Route::group(['middleware' => ['auth']], function () {
+    Route::group(['middleware' => ['auth_verification:admin']], function () {
+    	/*
+    		Route Khusus untuk role admin
+    	*/
+        Route::get('/homepage', function(){
+            return view('homepage');
+        });
+    });
+    Route::group(['middleware' => ['auth_verification:user']], function () {
+    	/*
+    		Route Khusus untuk role user
+    	*/
+        Route::get('/homepage', function(){
+            return view('homepage');
+        });
+
+    });
 });
