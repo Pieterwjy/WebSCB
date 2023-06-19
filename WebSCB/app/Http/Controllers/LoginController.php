@@ -2,25 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Akun;
 use App\Models\User;
-use Illuminate\Console\View\Components\Alert;
-use Illuminate\Http\Request;
 // use Illuminate\Support\Facades\Auth;
 use Auth;
+use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginController extends Controller
 {
     public function doLogin(Request $req){
         $credentials = $req->validate([
-            "email"=> ["required"],
+            "username"=> ["required"],
             "password"=>["required"],
         ]);
         if(Auth::attempt($credentials)){
             $user = Auth::user();
-            if($user->level == "admin"){
+            print($user);
+            if($user->hak_akses_akun == "admin"){
                 $req->session()->regenerate();
-                $user = User::all()->except(Auth::id());;
-                return view('admin',compact('user'));
+                $user = Akun::all()->except(Auth::id());;
+                return view('announcement');
 
             }else if ($user->hak_akses_akun == "multimedia"){
 
@@ -28,8 +30,10 @@ class LoginController extends Controller
 
             }
         }else{
+            
             Alert::error('Gagal Login', 'Kredensial yang anda masukkan salah');
-            return redirect('toLogin');
+            return redirect('login');
         }
     }
+    
 }

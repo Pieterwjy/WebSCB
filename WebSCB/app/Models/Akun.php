@@ -2,17 +2,18 @@
 
 namespace App\Models;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class Akun extends Model
+class Akun extends Authenticatable
 {
+    protected $table = 'Akun';
     use HasFactory;
 
     protected $fillable = [
-        'id_akun',
-        'nama_akun',
-        'sandi_akun',
+        'id',
+        'username',
+        'password',
         'hak_akses_akun',
         'status_akun'
     ];

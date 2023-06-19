@@ -39,12 +39,12 @@
               <p class="text-white-50 mb-5">Please enter your login and password!</p>
 
               <div class="form-outline form-white mb-4">
-                <input type="email" id="typeEmailX" name="email" class="form-control form-control-lg" />
+                <input type="text" id="typeEmailX" name="username" class="form-control form-control-lg" />
                 <label class="form-label" for="typeEmailX">Email</label>
               </div>
 
               <div class="form-outline form-white mb-4">
-                <input type="password" id="typePasswordX" name='password' class="form-control form-control-lg" />
+                <input type="password" id="typePasswordX" name="password" class="form-control form-control-lg" />
                 <label class="form-label" for="typePasswordX">Password</label>
               </div>
 
@@ -69,5 +69,6 @@
     </div>
   </div>
 </section>
+@include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 </body>
 </html>

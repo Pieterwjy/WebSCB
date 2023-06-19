@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('Pengumuman', function (Blueprint $table) {
-            $table->id('id_pengumuman');
-            $table->integer('id_akun');
-            $table->foreign('id_akun')->references('id_akun')->on('Akun')->onDelete('cascade');
+            $table->id();
+            $table->unsignedBigInteger('id_akun');
+            $table->foreign('id_akun')->references('id')->on('Akun')->onDelete('cascade');
             $table->timestamps();
             $table->string('deskripsi_pengumuman');
         });

@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pengumuman extends Model
 {
+    protected $table = 'Pengumuman';
     use HasFactory;
     protected $fillable = [
-        'id_pengumuman',
+        'id',
         'id_akun',
         'tanggal_pengumuman',
         'deskripsi_pengumuman'
