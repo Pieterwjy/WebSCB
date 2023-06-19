@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('Pengumuman', function (Blueprint $table) {
             $table->id('id_pengumuman');
-            $table->id('id_akun');
-            $table->date_timestamp_get();
+            $table->integer('id_akun');
+            $table->foreign('id_akun')->references('id_akun')->on('Akun')->onDelete('cascade');
+            $table->timestamps();
             $table->string('deskripsi_pengumuman');
         });
     }

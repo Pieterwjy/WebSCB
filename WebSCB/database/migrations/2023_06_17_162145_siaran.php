@@ -14,8 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('Siaran', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id('id_siaran');
+            $table->integer('id_akun');
+            $table->foreign('id_akun')->references('id_akun')->on('Akun')->onDelete('cascade');
+            $table->date_time_set('tanggal_siaran');
+            $table->string('embed_siaran');
+            $table->string('deskripsi_siaran');
+            $table->string('status_siaran');
         });
     }
 

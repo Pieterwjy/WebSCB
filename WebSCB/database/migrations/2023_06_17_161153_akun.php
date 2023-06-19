@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nama_akun');
             $table->string('sandi_akun');
             $table->string('hak_akses_akun');
-            $table->boolval('status_akun');
+            $table->integer('status_akun');
         });
     }
 
