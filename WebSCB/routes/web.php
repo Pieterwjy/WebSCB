@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,3 +32,15 @@ Route::get('/live', function () {
 Route::get('/login', function () {
     return view('login');
 });
+
+//force Middleware
+Route::get('/toLogin', function(){
+    return view('home');
+})->name('fhome');
+
+
+
+
+
+//Contoller
+Route::get('/doLog', [LoginController::class,'doLogin'])->name('doLog');
